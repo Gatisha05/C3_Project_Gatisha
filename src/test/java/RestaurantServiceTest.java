@@ -63,4 +63,24 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //<<<<<<<<<<<<<<<<<<<<<<<Total Price of MENU Items>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void selecting_item_should_increase_total_order_cost() {
+
+        service.selectItem("Vegetable lasagne",269);
+        assertEquals(269, service.getTotalCost());
+
+    }
+
+    @Test
+    public void unselecting_item_should_check_if_item_is_in_selectedItems_and_then_decrease_total_order_cost() {
+
+        service.unselectItem("Vegetable lasagne",269);
+
+        assertEquals(0, service.getTotalCost());
+
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<Total Price of MENU Items>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
