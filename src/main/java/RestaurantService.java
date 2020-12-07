@@ -5,9 +5,18 @@ import java.util.List;
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
 
-    public Restaurant findRestaurantByName(String restaurantName){
+    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
+
+        for (int i = 0; i < restaurants.size(); i++)
+        {
+            if (restaurantName.equalsIgnoreCase(restaurants.get(i).getName()))
+                return restaurants.get(i);
+            else if (i == restaurants.size() - 1)
+                throw new restaurantNotFoundException(restaurantName);
+
+        }
         return null;
-        //DELETE ABOVE STATEMENT AND WRITE CODE HERE
+
     }
 
 
