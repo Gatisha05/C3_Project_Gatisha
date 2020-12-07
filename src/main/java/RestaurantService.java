@@ -21,6 +21,36 @@ public class RestaurantService {
 
     }
 
+    public void selectItem(String name, int price)
+    {
+        Item newItem = new Item(name,price);
+        selectedItems.add(newItem);
+        totalCost += price;
+
+    }
+
+    public void unselectItem(String name, int price)
+    {
+        for (Item currentSelectedItem: selectedItems) {
+            if (currentSelectedItem.getName().equalsIgnoreCase(name))
+            {
+                selectedItems.remove(new Item(name, price));
+                totalCost -= price;
+            }
+        }
+
+    }
+
+    public List<Item> getSelectedItems() {
+
+        return selectedItems;
+    }
+
+    public int getTotalCost()
+    {
+        return totalCost;
+    }
+
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         Restaurant newRestaurant = new Restaurant(name, location, openingTime, closingTime);
         restaurants.add(newRestaurant);
